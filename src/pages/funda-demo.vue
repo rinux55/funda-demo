@@ -1,5 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import FundaCard from "@/components/funda-card.vue"
+</script>
 
 <template>
-  <div class="">hello funda!</div>
+  <suspense>
+    <funda-card id="c8167628-0c8e-488b-9033-c81ae2679256" />
+    <template #fallback> Loading... </template>
+  </suspense>
 </template>
