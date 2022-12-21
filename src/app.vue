@@ -9,4 +9,8 @@ import { RouterView } from "vue-router"
   </main>
 </template>
 
-<style scoped></style>
+<style scoped>
+main {
+  @apply p-10;
+}
+</style>

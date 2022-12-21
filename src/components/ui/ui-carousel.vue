@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import "@splidejs/splide/css/core"
+import "@splidejs/splide/css"
 import { Splide, SplideSlide, type Options } from "@splidejs/vue-splide"
 
 defineProps<{
@@ -10,6 +11,8 @@ const splideOptions: Options = {
   rewind: true,
   lazyLoad: "nearby",
   pagination: false,
+  preloadPages: 4,
+  arrows: false,
 }
 </script>
 
@@ -26,12 +29,12 @@ const splideOptions: Options = {
   </splide>
 </template>
 
-<style>
+<style scoped>
 .ui-carousel {
-  @apply w-full;
+  clip-path: inset(0% 100% 0% 100% round 8px);
 }
 
 .ui-carousel-image {
-  @apply m-auto;
+  @apply max-w-full max-h-full object-contain;
 }
 </style>
