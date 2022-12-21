@@ -5,7 +5,7 @@ import { RouterView } from "vue-router"
 <template>
   <header></header>
   <main>
-    <RouterView />
+    <router-view />
   </main>
 </template>
 

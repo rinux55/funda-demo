@@ -1,5 +1,5 @@
 <script setup lang="ts"></script>
 
 <template>
-  <div>hello funda!</div>
+  <div class="">hello funda!</div>
 </template>
