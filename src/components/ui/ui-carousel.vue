@@ -12,6 +12,8 @@ const splideOptions: Options = {
   lazyLoad: "nearby",
   pagination: false,
   preloadPages: 4,
+  keyboard: "global",
+  wheel: true,
 }
 </script>
 
@@ -22,9 +24,10 @@ const splideOptions: Options = {
       :key="image"
       class="ui-carousel-slide"
     >
+      <!--@todo I'd improve accessibility with providing an
+        alt tag, such as the description of the image -->
       <img
         :data-splide-lazy="image"
-        alt=""
         class="ui-carousel-image"
         data-test="image"
       />
@@ -34,15 +37,15 @@ const splideOptions: Options = {
 
 <style scoped>
 .ui-carousel {
-  clip-path: inset(0% 100% 0% 100% round 8px);
+  clip-path: inset(0% 100% 0% 100% round 8px 8px 0px 0px);
+}
+
+.ui-carousel-slide {
+  @apply bg-black;
 }
 
 .ui-carousel-image {
-  @apply max-w-full max-h-full object-contain h-full;
+  @apply max-w-full max-h-full object-cover h-full m-auto;
   aspect-ratio: 16/9;
 }
-
-/* .ui-carousel-slide {
-  @apply h-full;
-} */
 </style>

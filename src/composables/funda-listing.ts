@@ -26,6 +26,7 @@ export function useFundaListing(id: string) {
 }
 
 function parseData(data: FundaApiResource): FundaListing {
+  console.log(data)
   return {
     price: getCurrency(data.KoopPrijs),
     images: getImages(data["Media-Foto"]),
@@ -42,6 +43,8 @@ function getCurrency(amount: number): string {
 }
 
 function getImages(images: Array<string>): Array<string> {
+  // @todo No solution as permanent as a temporary solution!
+  // I'd probably use the api resource's "Media" attribute to properly do this
   return images.map((str) => str.replace("klein", "grotere"))
 }
 

@@ -1,8 +1,8 @@
 <script setup lang="ts"></script>
 <template>
-  <div class="ui-card">
+  <section class="ui-card">
     <slot />
-  </div>
+  </section>
 </template>
 <style scoped>
 .ui-card {

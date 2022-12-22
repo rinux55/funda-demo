@@ -32,7 +32,7 @@ const { data, error, loading } = useFundaListing(props.id)
         </div>
         <div class="text-right align-middle">
           <a
-            :href="data.URL"
+            :href="data.url"
             target="_blank"
             class="button"
             title="Bekijk op Funda"
@@ -60,8 +60,10 @@ const { data, error, loading } = useFundaListing(props.id)
   @apply grid grid-cols-2 p-5;
 }
 
+
+
 .button {
-  @apply p-3 text-blue-500 font-bold bg-gray-100 border-gray-300 border rounded-lg shadow-sm 
+  @apply p-3 text-blue-500 font-bold bg-gray-100 border-gray-300 border rounded-lg shadow-sm
   hover:text-blue-600 hover:border-gray-400
   focus:ring-blue-200 focus:ring-3 focus focus:border-blue-400
 
