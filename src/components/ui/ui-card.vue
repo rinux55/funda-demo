@@ -1,9 +1,7 @@
 <script setup lang="ts"></script>
 <template>
   <div class="ui-card">
-    <slot name="header" />
-    <slot name="content" />
-    <slot name="footer" />
+    <slot />
   </div>
 </template>
 <style scoped>

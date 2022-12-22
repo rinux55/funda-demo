@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import "@splidejs/splide/css/core"
-import "@splidejs/splide/css"
+import "@splidejs/splide/css/default"
 import { Splide, SplideSlide, type Options } from "@splidejs/vue-splide"
 
 defineProps<{
@@ -12,13 +12,16 @@ const splideOptions: Options = {
   lazyLoad: "nearby",
   pagination: false,
   preloadPages: 4,
-  arrows: false,
 }
 </script>
 
 <template>
   <splide :options="splideOptions" class="ui-carousel">
-    <splide-slide v-for="image in images" :key="image">
+    <splide-slide
+      v-for="image in images"
+      :key="image"
+      class="ui-carousel-slide"
+    >
       <img
         :data-splide-lazy="image"
         alt=""
@@ -35,6 +38,11 @@ const splideOptions: Options = {
 }
 
 .ui-carousel-image {
-  @apply max-w-full max-h-full object-contain;
+  @apply max-w-full max-h-full object-contain h-full;
+  aspect-ratio: 16/9;
 }
+
+/* .ui-carousel-slide {
+  @apply h-full;
+} */
 </style>

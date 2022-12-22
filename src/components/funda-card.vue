@@ -17,7 +17,6 @@ const response = await fetch(url)
 
 const listing: FundaListing = await response.json()
 
-console.log(listing)
 const images = computed(() =>
   listing["Media-Foto"].map((str) => str.replace("klein", "grotere"))
 )
@@ -29,20 +28,26 @@ const amount = computed(() =>
 </script>
 <template>
   <ui-card class="funda-card">
-    <template #header> </template>
-    <template #content>
-      <ui-carousel :images="images"></ui-carousel>
-      <div class="funda-card-content">
-        <div class="content-row">
-          <h2 class="funda-card-title">
-            {{ listing.Adres }}
-          </h2>
-          <div class="font-medium text-2xl mt-4">{{ amount }}</div>
-          <div></div>
+    <ui-carousel :images="images"></ui-carousel>
+    <div class="funda-card-content">
+      <div>
+        <h2 class="funda-card-title">
+          {{ listing.Adres }}
+        </h2>
+        <div class="font-medium text-2xl mt-4 text-gray-500">
+          {{ amount }}
         </div>
-        <div class="">{{ listing.VolledigeOmschrijving }}</div>
       </div>
-    </template>
+      <div class="text-right align-middle">
+        <a
+          :href="listing.URL"
+          target="_blank"
+          class="button"
+          title="Bekijk op Funda"
+          >Bekijk op Funda</a
+        >
+      </div>
+    </div>
   </ui-card>
 </template>
 <style scoped lang="scss">
@@ -56,5 +61,13 @@ const amount = computed(() =>
 
 .funda-card-content {
   @apply grid grid-cols-2 p-5;
+}
+
+.button {
+  @apply p-3 text-blue-500 font-bold bg-gray-100 border-gray-300 border rounded-lg shadow-sm 
+  hover:text-blue-600 hover:border-gray-400
+  focus:ring-blue-200 focus:ring-3 focus focus:border-blue-400
+
+  transition-all;
 }
 </style>
