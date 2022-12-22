@@ -15,13 +15,14 @@ As opposed to Funda, where a popup opens with a carousel, the user can scroll th
 ### Splide 
 I wanted to create the carousel myself first, but I realized quickly that that would be too time-consuming for the amount of time given. I did some research on a simple, reliable and small carousel library, and went for [splide](https://splidejs.com/).
 
+
 ## Project Setup
 
 ```sh
 yarn install
 ```
 
-### Compile and Hot-Reload for Development
+### Running the project
 
 ```sh
 yarn dev

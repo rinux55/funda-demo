@@ -3,11 +3,6 @@ import FundaCard from "./funda-card.vue"
 
 describe("components/funda/funda-card", () => {
   function createWrapper() {
-    console.log(
-      `${import.meta.env.VITE_HEROKU_CORS_PROXY}${
-        import.meta.env.VITE_FUNDA_API_URL
-      }/*`
-    )
     return mount(FundaCard, { id: "test-id" })
   }
 
@@ -26,6 +21,7 @@ describe("components/funda/funda-card", () => {
   })
 
   it("should show an error placeholder when the request has failed", () => {
+    // @todo ideally the url would be tested with the exact url. For simplicity I'm using a catch-all.
     cy.intercept(`*`, { statusCode: 400 })
 
     const wrapper = createWrapper()
@@ -74,7 +70,7 @@ describe("components/funda/funda-card", () => {
     const wrapper = createWrapper()
 
     wrapper
-      .get("a[data-test=listing-button]")
+      .get("a[data-test=listing-action]")
       .should("have.attr", "href", "funda.nl/foo")
   })
 

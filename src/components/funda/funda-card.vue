@@ -12,34 +12,39 @@ const { data, error, loading } = useFundaListing(props.id)
 </script>
 <template>
   <ui-card class="funda-card">
-    <div data-test="loading-wrapper" v-if="loading && !error">
+    <div
+      v-if="loading && !error"
+      data-test="loading-wrapper"
+      class="state-wrapper"
+    >
       <!-- @todo I'd implement a nice placeholder here so the content doesn't flash -->
       Laden...
     </div>
-    <div data-test="error-wrapper" v-if="error && !loading">
+    <div
+      v-if="error && !loading"
+      data-test="error-wrapper"
+      class="state-wrapper"
+    >
       <!-- @todo I'd implement some better error feedback here -->
       Er is iets misgegaan...
     </div>
-    <div data-test="content-wrapper" v-if="!loading && !error">
-      <ui-carousel :images="data.images"></ui-carousel>
+    <div v-if="!loading && !error" data-test="content-wrapper">
+      <ui-carousel :images="data.images" />
       <div class="funda-card-content">
         <div>
-          <h2 data-test="listing-address" class="text-4xl">
+          <h2 data-test="listing-address" class="listing-address">
             {{ data.address }}
           </h2>
-          <div
-            data-test="listing-price"
-            class="font-medium text-2xl mt-4 text-gray-500"
-          >
+          <div data-test="listing-price" class="listing-price">
             {{ data.price }}
           </div>
         </div>
         <div class="funda-card-actions">
           <ui-button
-            data-test="listing-button"
+            data-test="listing-action"
             :to="data.url"
             title="Bekijk huis op Funda..."
-            class="button"
+            class="listing-action"
           >
             Bekijk op Funda
           </ui-button>
@@ -54,14 +59,26 @@ const { data, error, loading } = useFundaListing(props.id)
 }
 
 .funda-card-content {
-  @apply grid grid-cols-1 gap-5 p-5 lg:(grid-cols-2 );
+  @apply p-5 grid grid-cols-1 gap-5 lg:(grid-cols-2);
 }
 
 .funda-card-actions {
   @apply lg:(text-right);
 }
 
-.button {
+.listing-action {
   @apply block lg:inline-block align-bottom;
+}
+
+.listing-address {
+  @apply text-4xl;
+}
+
+.listing-price {
+  @apply font-medium text-2xl mt-4 text-gray-500;
+}
+
+.state-wrapper {
+  @apply p-5 text-lg text-gray-500;
 }
 </style>

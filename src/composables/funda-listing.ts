@@ -44,6 +44,8 @@ function getCurrency(amount: number): string {
 function getImages(images: Array<string>): Array<string> {
   // @todo No solution as permanent as a temporary solution!
   // I'd probably use the api resource's "Media" attribute to properly do this
+
+  //@todo For different screen sizes i'd load different size images
   return images.map((str) => str.replace("klein", "grotere"))
 }
 
