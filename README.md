@@ -15,11 +15,18 @@ As opposed to Funda, where a popup opens with a carousel, the user can scroll th
 ### Splide 
 I wanted to create the carousel myself first, but I realized quickly that that would be too time-consuming for the amount of time given. I did some research on a simple, reliable and small carousel library, and went for [splide](https://splidejs.com/).
 
-
 ## Project Setup
 
 ```sh
 yarn install
+```
+
+### Updating the listing ID
+If the listing has been removed, the listing ID can be manually changed by updating the value `VITE_FUNDA_LISTING_ID` in `.env`
+
+```
+// .env
+VITE_FUNDA_LISTING_ID = "c8167628-0c8e-488b-9033-c81ae2679256"
 ```
 
 ### Running the project
@@ -33,3 +40,4 @@ yarn dev
 ```sh
 npm run test:component
 ```
+
