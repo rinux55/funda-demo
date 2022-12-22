@@ -35,7 +35,7 @@ VITE_FUNDA_LISTING_ID = "c8167628-0c8e-488b-9033-c81ae2679256"
 yarn dev
 ```
 
-### Run Components Tests with [Cypress](https://docs.cypress.io/guides/component-testing/overview/)
+### Run Component Tests with [Cypress](https://docs.cypress.io/guides/component-testing/overview/)
 
 ```sh
 yarn test:component
