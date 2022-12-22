@@ -38,6 +38,6 @@ yarn dev
 ### Run Components Tests with [Cypress](https://docs.cypress.io/guides/component-testing/overview/)
 
 ```sh
-npm run test:component
+yarn test:component
 ```
 
