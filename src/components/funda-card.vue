@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { computed } from "vue"
-import type { FundaListing } from "@/types/funda-listing"
+import { useFundaListing } from "@/composables/funda-listing"
 import UiCarousel from "@/components/ui/ui-carousel.vue"
 import UiCard from "@/components/ui/ui-card.vue"
 
@@ -8,46 +7,44 @@ const props = defineProps<{
   id: string
 }>()
 
-// I had some CORS issues loading the API through localhost. I needed to create a proxy to be able to load the API.
-const url = `${import.meta.env.VITE_HEROKU_CORS_PROXY}${
-  import.meta.env.VITE_FUNDA_API_URL
-}/json/detail/${import.meta.env.VITE_FUNDA_API_KEY}/koop/${props.id}/`
-
-const response = await fetch(url)
-
-const listing: FundaListing = await response.json()
-
-const images = computed(() =>
-  listing["Media-Foto"].map((str) => str.replace("klein", "grotere"))
-)
-const amount = computed(() =>
-  Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(
-    listing.KoopPrijs
-  )
-)
+const { data, error, loading } = useFundaListing(props.id)
 </script>
 <template>
   <ui-card class="funda-card">
-    <ui-carousel :images="images"></ui-carousel>
-    <div class="funda-card-content">
-      <div>
-        <h2 class="funda-card-title">
-          {{ listing.Adres }}
-        </h2>
-        <div class="font-medium text-2xl mt-4 text-gray-500">
-          {{ amount }}
+    <template v-if="loading && !error">
+      <!-- @todo I'd implement a nice placeholder here so the content doesn't shift -->
+      Loading...
+    </template>
+    <template v-if="error && !loading">
+      <!-- @todo I'd implement some better error feedback here -->
+      Something went wrong...
+    </template>
+    <template v-if="!loading && !error">
+      <ui-carousel :images="data.images"></ui-carousel>
+      <div class="funda-card-content">
+        <div>
+          <h2 class="funda-card-title">
+            {{ data.address }}
+          </h2>
+          <div class="font-medium text-2xl mt-4 text-gray-500">
+            {{ data.price }}
+          </div>
+        </div>
+        <div class="text-right align-middle">
+          <a
+            :href="data.URL"
+            target="_blank"
+            class="button"
+            title="Bekijk op Funda"
+            >Bekijk op Funda</a
+          >
         </div>
       </div>
-      <div class="text-right align-middle">
-        <a
-          :href="listing.URL"
-          target="_blank"
-          class="button"
-          title="Bekijk op Funda"
-          >Bekijk op Funda</a
-        >
-      </div>
-    </div>
+    </template>
+    <template v-if="error">
+      <!--Implement some more elaborate error feedback-->
+      Er is iets misgegaan.
+    </template>
   </ui-card>
 </template>
 <style scoped lang="scss">
