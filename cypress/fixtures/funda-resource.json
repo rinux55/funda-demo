@@ -1,0 +1,10 @@
+{
+  "Adres": "Tweede Schinkelstraat 144",
+  "Media-Foto": [
+    "https://picsum.photos/id/1/200/300",
+    "https://picsum.photos/id/2/200/300",
+    "https://picsum.photos/id/3/200/300"
+  ],
+  "KoopPrijs": 239000,
+  "URL": "funda.nl/foo"
+}

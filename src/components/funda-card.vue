@@ -12,27 +12,31 @@ const { data, error, loading } = useFundaListing(props.id)
 </script>
 <template>
   <ui-card class="funda-card">
-    <template v-if="loading && !error">
+    <div data-test="loading-wrapper" v-if="loading && !error">
       <!-- @todo I'd implement a nice placeholder here so the content doesn't flash -->
-      Loading...
-    </template>
-    <template v-if="error && !loading">
+      Laden...
+    </div>
+    <div data-test="error-wrapper" v-if="error && !loading">
       <!-- @todo I'd implement some better error feedback here -->
-      Something went wrong...
-    </template>
-    <template v-if="!loading && !error">
+      Er is iets misgegaan...
+    </div>
+    <div data-test="content-wrapper" v-if="!loading && !error">
       <ui-carousel :images="data.images"></ui-carousel>
       <div class="funda-card-content">
         <div>
-          <h2 class="text-4xl">
+          <h2 data-test="listing-address" class="text-4xl">
             {{ data.address }}
           </h2>
-          <div class="font-medium text-2xl mt-4 text-gray-500">
+          <div
+            data-test="listing-price"
+            class="font-medium text-2xl mt-4 text-gray-500"
+          >
             {{ data.price }}
           </div>
         </div>
         <div class="funda-card-actions">
           <ui-button
+            data-test="listing-button"
             :to="data.url"
             title="Bekijk huis op Funda..."
             class="button"
@@ -41,7 +45,7 @@ const { data, error, loading } = useFundaListing(props.id)
           </ui-button>
         </div>
       </div>
-    </template>
+    </div>
   </ui-card>
 </template>
 <style scoped lang="scss">
