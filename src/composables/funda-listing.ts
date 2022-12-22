@@ -26,7 +26,6 @@ export function useFundaListing(id: string) {
 }
 
 function parseData(data: FundaApiResource): FundaListing {
-  console.log(data)
   return {
     price: getCurrency(data.KoopPrijs),
     images: getImages(data["Media-Foto"]),

@@ -2,6 +2,7 @@
 import { useFundaListing } from "@/composables/funda-listing"
 import UiCarousel from "@/components/ui/ui-carousel.vue"
 import UiCard from "@/components/ui/ui-card.vue"
+import UiButton from "@/components/ui/ui-button.vue"
 
 const props = defineProps<{
   id: string
@@ -12,7 +13,7 @@ const { data, error, loading } = useFundaListing(props.id)
 <template>
   <ui-card class="funda-card">
     <template v-if="loading && !error">
-      <!-- @todo I'd implement a nice placeholder here so the content doesn't shift -->
+      <!-- @todo I'd implement a nice placeholder here so the content doesn't flash -->
       Loading...
     </template>
     <template v-if="error && !loading">
@@ -23,27 +24,23 @@ const { data, error, loading } = useFundaListing(props.id)
       <ui-carousel :images="data.images"></ui-carousel>
       <div class="funda-card-content">
         <div>
-          <h2 class="funda-card-title">
+          <h2 class="text-4xl">
             {{ data.address }}
           </h2>
           <div class="font-medium text-2xl mt-4 text-gray-500">
             {{ data.price }}
           </div>
         </div>
-        <div class="text-right align-middle">
-          <a
-            :href="data.url"
-            target="_blank"
+        <div class="funda-card-actions">
+          <ui-button
+            :to="data.url"
+            title="Bekijk huis op Funda..."
             class="button"
-            title="Bekijk op Funda"
-            >Bekijk op Funda</a
           >
+            Bekijk op Funda
+          </ui-button>
         </div>
       </div>
-    </template>
-    <template v-if="error">
-      <!--Implement some more elaborate error feedback-->
-      Er is iets misgegaan.
     </template>
   </ui-card>
 </template>
@@ -52,21 +49,15 @@ const { data, error, loading } = useFundaListing(props.id)
   @apply max-w-900px m-auto;
 }
 
-.funda-card-title {
-  @apply text-4xl;
-}
-
 .funda-card-content {
-  @apply grid grid-cols-2 p-5;
+  @apply grid grid-cols-1 gap-5 p-5 lg:(grid-cols-2 );
 }
 
-
+.funda-card-actions {
+  @apply lg:(text-right);
+}
 
 .button {
-  @apply p-3 text-blue-500 font-bold bg-gray-100 border-gray-300 border rounded-lg shadow-sm
-  hover:text-blue-600 hover:border-gray-400
-  focus:ring-blue-200 focus:ring-3 focus focus:border-blue-400
-
-  transition-all;
+  @apply block lg:inline-block align-bottom;
 }
 </style>
