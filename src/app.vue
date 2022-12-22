@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { RouterView } from "vue-router"
+import FundaDemo from "@/pages/funda-demo.vue"
 </script>
 
 <template>
   <header></header>
   <main>
-    <router-view />
+    <funda-demo />
   </main>
 </template>
 
 <style scoped>
 main {
-  @apply p-10;
+  @apply p-5 md:p-10;
 }
 </style>

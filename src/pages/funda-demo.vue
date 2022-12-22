@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import FundaCard from "@/components/funda-card.vue"
+import FundaCard from "@/components/funda/funda-card.vue"
 </script>
 
 <template>

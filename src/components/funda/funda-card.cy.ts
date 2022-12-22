@@ -1,7 +1,7 @@
 import { mount } from "cypress/vue"
 import FundaCard from "./funda-card.vue"
 
-describe("pages/funda-demo", () => {
+describe("components/funda/funda-card", () => {
   function createWrapper() {
     console.log(
       `${import.meta.env.VITE_HEROKU_CORS_PROXY}${

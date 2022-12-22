@@ -1,4 +1,4 @@
-import type { FundaApiResource, FundaListing } from "@/types/funda-listing"
+import type { FundaApiResource, FundaListing } from "@/types/funda"
 import { ref, type Ref } from "vue"
 
 export function useFundaListing(id: string) {

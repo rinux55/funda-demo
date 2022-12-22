@@ -1,68 +1,34 @@
 # funda-demo
 
-This template should help get you started developing with Vue 3 in Vite.
 
-## Recommended IDE Setup
+## The idea
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+This is my demo for the Funda interview. 
+I've created a card which displayes information about a listing. This card could be used in the mobile or desktop overview.
 
-## Type Support for `.vue` Imports in TS
+### A better image carousel
 
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin) to make the TypeScript language service aware of `.vue` types.
+When I'm browsing Funda, I'd like to browse through the pictures of any listing more quickly. That's why I've created an accessible image carousel which is displayed in the card. 
 
-If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has also implemented a [Take Over Mode](https://github.com/johnsoncodehk/volar/discussions/471#discussioncomment-1361669) that is more performant. You can enable it by the following steps:
+As opposed to Funda, where a popup opens with a carousel, the user can scroll through the images directly. Apart from touch, the user can also use their keyboard and scroll wheel to quickly flick through the images. 
 
-1. Disable the built-in TypeScript Extension
-    1) Run `Extensions: Show Built-in Extensions` from VSCode's command palette
-    2) Find `TypeScript and JavaScript Language Features`, right click and select `Disable (Workspace)`
-2. Reload the VSCode window by running `Developer: Reload Window` from the command palette.
-
-## Customize configuration
-
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+### Splide 
+I wanted to create the carousel myself first, but I realized quickly that that would be too time-consuming for the amount of time given. I did some research on a simple, reliable and small carousel library, and went for [splide](https://splidejs.com/).
 
 ## Project Setup
 
 ```sh
-npm install
+yarn install
 ```
 
 ### Compile and Hot-Reload for Development
 
 ```sh
-npm run dev
+yarn dev
 ```
 
-### Type-Check, Compile and Minify for Production
+### Run Components Tests with [Cypress](https://docs.cypress.io/guides/component-testing/overview/)
 
 ```sh
-npm run build
-```
-
-### Run Unit Tests with [Vitest](https://vitest.dev/)
-
-```sh
-npm run test:unit
-```
-
-### Run End-to-End Tests with [Cypress](https://www.cypress.io/)
-
-```sh
-npm run test:e2e:dev
-```
-
-This runs the end-to-end tests against the Vite development server.
-It is much faster than the production build.
-
-But it's still recommended to test the production build with `test:e2e` before deploying (e.g. in CI environments):
-
-```sh
-npm run build
-npm run test:e2e
-```
-
-### Lint with [ESLint](https://eslint.org/)
-
-```sh
-npm run lint
+npm run test:component
 ```
