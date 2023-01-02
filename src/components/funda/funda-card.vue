@@ -31,13 +31,11 @@ const { data, error, loading } = useFundaListing(props.id)
     <div v-if="!loading && !error" data-test="content-wrapper">
       <ui-carousel :images="data.images" />
       <div class="funda-card-content">
-        <div>
-          <h2 data-test="listing-address" class="listing-address">
-            {{ data.address }}
-          </h2>
-          <div data-test="listing-price" class="listing-price">
-            {{ data.price }}
-          </div>
+        <h2 data-test="listing-address" class="listing-address">
+          {{ data.address }}
+        </h2>
+        <div data-test="listing-price" class="listing-price">
+          {{ data.price }}
         </div>
         <div class="funda-card-actions">
           <ui-button
@@ -59,11 +57,11 @@ const { data, error, loading } = useFundaListing(props.id)
 }
 
 .funda-card-content {
-  @apply p-5 grid grid-cols-1 gap-5 lg:(grid-cols-2);
+  @apply p-5 grid grid-cols-1 gap-4 lg:(grid-cols-2);
 }
 
 .funda-card-actions {
-  @apply lg:(text-right);
+  @apply lg:(text-right row-start-1 col-start-2);
 }
 
 .listing-action {
@@ -75,7 +73,7 @@ const { data, error, loading } = useFundaListing(props.id)
 }
 
 .listing-price {
-  @apply font-medium text-2xl mt-4 text-gray-500;
+  @apply font-medium text-2xl text-gray-500 col-start-1;
 }
 
 .state-wrapper {
