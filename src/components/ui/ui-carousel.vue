@@ -37,7 +37,7 @@ const splideOptions: Options = {
 
 <style scoped>
 .ui-carousel {
-  clip-path: inset(0% 100% 0% 100% round 8px 8px 0px 0px);
+  clip-path: inset(0px round 8px 8px 0px 0px);
 }
 
 .ui-carousel-slide {
@@ -45,7 +45,11 @@ const splideOptions: Options = {
 }
 
 .ui-carousel-image {
-  @apply max-w-full max-h-full object-cover h-full m-auto;
-  aspect-ratio: 16/9;
+  @apply max-w-full max-h-full object-contain h-full m-auto;
+  aspect-ratio: 3/2;
+}
+
+:deep(.splide__list) {
+  aspect-ratio: 3/2;
 }
 </style>
